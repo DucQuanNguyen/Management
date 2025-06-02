@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Management;
 
 namespace StudentManagement
 {
-    class StuMan
+    class StuManage
     {
         private List<Student> ListStudent = null;
- 
-        public StuMan() {
+
+        public StuManage() {
             ListStudent = new List<Student>();
         }
  
@@ -260,20 +261,10 @@ namespace StudentManagement
          */
         public void ShowStudent(List<Student> listst)
         {
-            // hien thi tieu de cot
-            Console.WriteLine("{0, -5} {1, -20} {2, -5} {3, 5} {4, 5} {5, 5} {6, 5} {7, 10} {8, 10}",
-                  "ID", "Name", "Gender", "Age", "Math", "Vietnamese", "English", "GPA", "Hoc Luc");
-            // hien thi danh sach student
-            if (listst != null && listst.Count > 0)
+            foreach (var item in listst)
             {
-                foreach (Student st in listst)
-                {
-                    Console.WriteLine("{0, -5} {1, -20} {2, -5} {3, 5} {4, 5} {5, 6} {6, 10} {7, 12} {8, 10}",
-                                      st.ID, st.Name, st.Gender, st.Age, st.DiemToan, st.DiemVan, st.DiemAnh,
-                                      st.DiemTB, st.HocLuc);
-                }
+                item.Display();
             }
-            Console.WriteLine();
         }
  
         /*

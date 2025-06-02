@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            StuMan manageStudent = new StuMan();
+            StuManage manageStudent = new StuManage();
 
             while (true)
             {

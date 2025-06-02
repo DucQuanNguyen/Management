@@ -7,7 +7,7 @@ using Management;
 
 namespace StudentManagement
 {
-    class Student : IItem
+    class Employee : IItem
     {
         public int ID { get; set; }
 
@@ -16,19 +16,14 @@ namespace StudentManagement
         public string Gender { get; set; }
 
         public int Age { get; set; }
-        public double DiemToan { get; set; }
 
-        public double DiemVan { get; set; }
+        public string? jobPosition { get; set; }
 
-        public double DiemAnh { get; set; }
-
-        public double DiemTB { get; set; }
-
-        public string HocLuc { get; set; }
+        public float salery { get; set; }
 
         public void Display()
         {
-            Console.WriteLine($"Student: {ID} - {Name} - {Age} - {DiemToan} - {DiemVan} - {DiemAnh} - {HocLuc}");
+            Console.WriteLine($"Employee: {ID} - {Name} - {Age} - {jobPosition} - {salery}");
         }
     }
 }
