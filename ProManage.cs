@@ -53,17 +53,48 @@ namespace Management
             // Khởi tạo một sản phẩm mới
             Product st = new Product();
             st.ID = GenerateID();
-            Console.Write("Enter Product name: ");
-            st.Name = Convert.ToString(Console.ReadLine());
-
-            Console.Write("Enter Product model: ");
-            st.model = Convert.ToString(Console.ReadLine());
-
-            Console.Write("Enter Product brand name: ");
-            st.brandName = Convert.ToString(Console.ReadLine());
-
-            Console.Write("Enter Product price: ");
-            st.price = Convert.ToDouble(Console.ReadLine());
+            do
+            {
+                Console.Write("Enter Product name: ");
+                st.Name = Convert.ToString(Console.ReadLine());
+                if (st.Name.Equals(null))
+                {
+                    Console.WriteLine("Please enter Product name!");
+                }
+            } while (st.Name.Equals(null));
+            //nhập product model
+            do
+            {
+                Console.Write("Enter Product model: ");
+                st.model = Convert.ToString(Console.ReadLine());
+                if (st.model.Equals(null))
+                {
+                    Console.WriteLine("Please enter product model!");
+                }
+            } while (st.model.Equals(null));
+            //nhập brand name
+            do
+            {
+                Console.Write("Enter Product brand name: ");
+                st.brandName = Convert.ToString(Console.ReadLine());
+                if (st.brandName.Equals(null))
+                {
+                    Console.WriteLine("Please enter brand name!");
+                }
+            } while (st.brandName.Equals(null));
+            double tPrice;
+            //nhập giá sản phẩm
+            do
+            {
+                Console.Write("Enter Product price: ");
+                tPrice = Convert.ToDouble(Console.ReadLine());
+                if (tPrice < 100)
+                {
+                    Console.WriteLine("Input invalid!");
+                }
+            } while (tPrice < 100);
+            st.price = tPrice;
+            
 
             ListProduct.Add(st);
         }

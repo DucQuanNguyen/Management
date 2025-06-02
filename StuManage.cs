@@ -51,24 +51,91 @@ namespace StudentManagement
             // Khởi tạo một sinh viên mới
             Student st = new Student();
             st.ID = GenerateID();
-            Console.Write("Enter student name: ");
-            st.Name = Convert.ToString(Console.ReadLine());
- 
-            Console.Write("Enter student gender: ");
-            st.Gender = Convert.ToString(Console.ReadLine());
- 
-            Console.Write("Enter student age: ");
-            st.Age = Convert.ToInt32(Console.ReadLine());
- 
-            Console.Write("Enter math score: ");
-            st.DiemToan = Convert.ToDouble(Console.ReadLine());
- 
-            Console.Write("Enter Vietnamese score: ");
-            st.DiemVan = Convert.ToDouble(Console.ReadLine());
- 
-            Console.Write("Enter English score: ");
-            st.DiemAnh = Convert.ToDouble(Console.ReadLine());
- 
+            //nhập tên sinh viên
+            do
+            {
+                Console.Write("Enter student name: ");
+                st.Name = Convert.ToString(Console.ReadLine());
+                if (st.Name.Equals(null))
+                {
+                    Console.WriteLine("Please enter student name!");
+                }
+            } while (st.Name.Equals(null));            
+            //nhập giới tính sinh viên
+            int gen;
+            do
+            {
+                Console.Write("Chose student gender: ");
+                Console.Write("1. Male");
+                Console.Write("2. Female");
+                Console.Write("3. Other");
+                gen = Convert.ToInt32(Console.ReadLine());
+                if(gen != 1 || gen != 2 || gen != 3)
+                {
+                    Console.WriteLine("Input invalid!");
+                }
+            } while (gen != 1 || gen != 2 || gen != 3);
+
+            switch (gen)
+            {
+                case 1:
+                    st.Gender = "Male";
+                    break;
+                case 2:
+                    st.Gender = "Female";
+                    break;
+                default:
+                    st.Gender = "Other";
+                    break;
+            }
+
+            int tAge;
+            double tMath, tVn, tEng;
+            //check tuổi sinh viên
+            do
+            {
+                Console.Write("Enter student age: ");
+                tAge = Convert.ToInt32(Console.ReadLine());
+                if(tAge is < 0 or > 100)
+                {
+                    Console.WriteLine("Input invalid!");
+                }
+            } while (tAge is < 0 or > 100);
+            //check điểm toán
+            do
+            {
+                Console.Write("Enter math score: ");
+                tMath = Convert.ToDouble(Console.ReadLine());
+                if (tMath is < 0 or > 10)
+                {
+                    Console.WriteLine("Input invalid!");
+                }
+            } while (tMath is < 0 or > 10);
+            //check điểm văn
+            do
+            {
+                Console.Write("Enter Vietnamese score: ");
+                tVn = Convert.ToDouble(Console.ReadLine());
+                if (tVn is < 0 or > 10)
+                {
+                    Console.WriteLine("Input invalid!");
+                }
+            } while (tVn is < 0 or > 10);
+            //check điểm anh
+            do
+            {
+                Console.Write("Enter English score: ");
+                tEng = Convert.ToDouble(Console.ReadLine());
+                if (tEng is < 0 or > 10)
+                {
+                    Console.WriteLine("Input invalid!");
+                }
+            } while (tEng is < 0 or > 10);
+            //lưu và tính điểm
+            st.Age = tAge;
+            st.DiemToan = tMath;
+            st.DiemVan = tVn;
+            st.DiemAnh = tEng;
             TinhDTB(st);
             XepLoaiHocLuc(st);
  
@@ -89,15 +156,34 @@ namespace StudentManagement
                 {
                     st.Name = name;
                 }
- 
-                Console.Write("Enter student gender: ");
-                // Nếu không nhập gì thì không cập nhật giới tính
-                string gender = Convert.ToString(Console.ReadLine());
-                if (gender != null && gender.Length > 0)
+                //check gender
+                int gen;
+                do
                 {
-                    st.Gender = gender;
+                    Console.Write("Chose student gender: ");
+                    Console.Write("1. Male");
+                    Console.Write("2. Female");
+                    Console.Write("3. Other");
+                    gen = Convert.ToInt32(Console.ReadLine());
+                    if (gen != 1 || gen != 2 || gen != 3)
+                    {
+                        Console.WriteLine("Input invalid!");
+                    }
+                } while (gen != 1 || gen != 2 || gen != 3);
+                //nhập gender để update
+                switch (gen)
+                {
+                    case 1:
+                        st.Gender = "Male";
+                        break;
+                    case 2:
+                        st.Gender = "Female";
+                        break;
+                    default:
+                        st.Gender = "Other";
+                        break;
                 }
- 
+
                 Console.Write("Enter student age: ");
                 string ageStr = Convert.ToString(Console.ReadLine());
                 // Nếu không nhập gì thì không cập nhật tuổi
@@ -105,7 +191,7 @@ namespace StudentManagement
                 {
                     st.Age = Convert.ToInt32(ageStr);
                 }
- 
+
                 Console.Write("Enter math score: ");
                 string diemToanStr = Convert.ToString(Console.ReadLine());
                 // Nếu không nhập gì thì không cập nhật điểm toán
@@ -113,7 +199,7 @@ namespace StudentManagement
                 {
                     st.DiemToan = Convert.ToDouble(diemToanStr);
                 }
- 
+
                 Console.Write("Enter Vietnamese score: ");
                 string diemVanStr = Convert.ToString(Console.ReadLine());
                 // Nếu không nhập gì thì không cập nhật điểm văn
@@ -121,7 +207,7 @@ namespace StudentManagement
                 {
                     st.DiemVan = Convert.ToDouble(diemVanStr);
                 }
- 
+
                 Console.Write("Enter English score: ");
                 string diemAnhStr = Convert.ToString(Console.ReadLine());
                 // Nếu không nhập gì thì không cập nhật điểm tiếng anh
@@ -129,9 +215,9 @@ namespace StudentManagement
                 {
                     st.DiemAnh = Convert.ToDouble(diemAnhStr);
                 }
- 
+
                 TinhDTB(st);
-                XepLoaiHocLuc(st);
+                XepLoaiHocLuc(st);                
             }
             else
             {

@@ -52,20 +52,76 @@ namespace Management
             // Khởi tạo một nhân viên mới
             Employee st = new Employee();
             st.ID = GenerateID();
-            Console.Write("Enter employee name: ");
-            st.Name = Convert.ToString(Console.ReadLine());
+            do
+            {
+                Console.Write("Enter employee name: ");
+                st.Name = Convert.ToString(Console.ReadLine());
+                if (st.Name.Equals(null))
+                {
+                    Console.WriteLine("Please enter employee name!");
+                }
+            } while (st.Name.Equals(null));
+            //check giới tính
+            int gen;
+            do
+            {
+                Console.Write("Chose employee gender: ");
+                Console.Write("1. Male");
+                Console.Write("2. Female");
+                Console.Write("3. Other");
+                gen = Convert.ToInt32(Console.ReadLine());
+                if (gen != 1 || gen != 2 || gen != 3)
+                {
+                    Console.WriteLine("Input invalid!");
+                }
+            } while (gen != 1 || gen != 2 || gen != 3);
+            //nhập giới tính
+            switch (gen)
+            {
+                case 1:
+                    st.Gender = "Male";
+                    break;
+                case 2:
+                    st.Gender = "Female";
+                    break;
+                default:
+                    st.Gender = "Other";
+                    break;
+            }
+            int tAge;
+            //nhập tuổi
+            do
+            {
+                Console.Write("Enter employee age: ");
+                tAge = Convert.ToInt32(Console.ReadLine());
+                if (tAge is < 0 or > 80)
+                {
+                    Console.WriteLine("Input invalid!");
+                }
+            } while (tAge is < 0 or > 80);
+            //nhập vị trí công việc
+            do
+            {
+                Console.Write("Enter jobPosition: ");
+                st.jobPosition = Convert.ToString(Console.ReadLine());
+                if (st.jobPosition.Equals(null))
+                {
+                    Console.WriteLine("Please enter employee jobPosition!");
+                }
+            } while (st.jobPosition.Equals(null));
 
-            Console.Write("Enter Employee gender: ");
-            st.Gender = Convert.ToString(Console.ReadLine());
-
-            Console.Write("Enter Employee age: ");
-            st.Age = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("Enter jobPosition: ");
-            st.jobPosition = Convert.ToString(Console.ReadLine());
-
-            Console.Write("Enter salery: ");
-            st.salery = Convert.ToDouble(Console.ReadLine());
+            double tSal;
+            //nhập mức lương
+            do
+            {
+                Console.Write("Enter salery: ");
+                tSal = Convert.ToDouble(Console.ReadLine());
+                if (tSal < 100)
+                {
+                    Console.WriteLine("Input invalid!");
+                }
+            } while (tSal < 100);
+            st.salery = tSal;
 
             ListEmployee.Add(st);
         }
@@ -84,15 +140,34 @@ namespace Management
                 {
                     st.Name = name;
                 }
-
-                Console.Write("Enter employee gender: ");
-                // Nếu không nhập gì thì không cập nhật giới tính
-                string gender = Convert.ToString(Console.ReadLine());
-                if (gender != null && gender.Length > 0)
+                //check giới tính để update
+                int gen;
+                do
                 {
-                    st.Gender = gender;
+                    Console.Write("Chose employee gender: ");
+                    Console.Write("1. Male");
+                    Console.Write("2. Female");
+                    Console.Write("3. Other");
+                    gen = Convert.ToInt32(Console.ReadLine());
+                    if (gen != 1 || gen != 2 || gen != 3)
+                    {
+                        Console.WriteLine("Input invalid!");
+                    }
+                } while (gen != 1 || gen != 2 || gen != 3);
+                //update giới tính
+                switch (gen)
+                {
+                    case 1:
+                        st.Gender = "Male";
+                        break;
+                    case 2:
+                        st.Gender = "Female";
+                        break;
+                    default:
+                        st.Gender = "Other";
+                        break;
                 }
-
+                //update tuổi
                 Console.Write("Enter employee age: ");
                 string ageStr = Convert.ToString(Console.ReadLine());
                 // Nếu không nhập gì thì không cập nhật tuổi
@@ -101,21 +176,22 @@ namespace Management
                     st.Age = Convert.ToInt32(ageStr);
                 }
 
+                //update vị trí công viêc
                 Console.Write("Enter jobPosition: ");
-                string jobPositionStr = Convert.ToString(Console.ReadLine());
-                // Nếu không nhập gì thì không cập nhật điểm toán
-                if (jobPositionStr != null && jobPositionStr.Length > 0)
+                String tJobPosition = Convert.ToString(Console.ReadLine());
+                // Nếu không nhập gì thì không cập nhật
+                if (tJobPosition != null && tJobPosition.Length > 0)
                 {
-                    st.jobPosition = jobPositionStr;
+                    st.jobPosition = tJobPosition;
                 }
-
                 Console.Write("Enter salery: ");
-                string saleryStr = Convert.ToString(Console.ReadLine());
-                // Nếu không nhập gì thì không cập nhật điểm văn
-                if (saleryStr != null && saleryStr.Length > 0)
+                String tSal = Convert.ToString(Console.ReadLine());
+                // Nếu không nhập gì thì không cập nhật
+                if (tSal != null && tSal.Length > 0)
                 {
-                    st.salery = Convert.ToDouble(saleryStr);
+                    st.salery = Convert.ToDouble(tSal);
                 }
+                
             }
             else
             {
