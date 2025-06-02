@@ -132,6 +132,15 @@ namespace Management
                 return st1.ID.CompareTo(st2.ID);
             });
         }
+        /**
+         * Hàm sắp xếp danh sach Employee theo vị trí công việc tăng dần theo bảng chữ cái
+         */
+        public void SortByJobposition()
+        {
+            ListEmployee.Sort(delegate (Employee st1, Employee st2) {
+                return st1.jobPosition.CompareTo(st2.jobPosition);
+            });
+        }
 
         /**
          * Hàm sắp xếp danh sach Employee theo tên tăng dần

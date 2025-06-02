@@ -17,7 +17,7 @@ namespace StudentManagement
 
         public int Age { get; set; }
 
-        public string? jobPosition { get; set; }
+        public string jobPosition { get; set; }
 
         public double salery { get; set; }
 
