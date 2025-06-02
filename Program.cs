@@ -1,11 +1,14 @@
-﻿namespace StudentManagement
+﻿using Management;
+
+namespace StudentManagement
 {
     internal class Program
     {
         static void Main(string[] args)
         {
             StuManage manageStudent = new StuManage();
-
+            EmpManage manageEmployee = new EmpManage();
+            ProManage manageProduct = new ProManage();
             while (true)
             {
                 Console.WriteLine("\nStudent management program");

@@ -19,7 +19,7 @@ namespace StudentManagement
 
         public string? jobPosition { get; set; }
 
-        public float salery { get; set; }
+        public double salery { get; set; }
 
         public void Display()
         {
