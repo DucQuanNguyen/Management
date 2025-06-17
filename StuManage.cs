@@ -251,7 +251,7 @@ namespace StudentManagement
         public void SortByDiemTB()
         {
             ListStudent.Sort(delegate (Student st1, Student st2) {
-                return st1.DiemTB.CompareTo(st2.DiemTB);
+                return st2.DiemTB.CompareTo(st1.DiemTB);
             });
         }
  

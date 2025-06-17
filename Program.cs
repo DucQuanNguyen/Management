@@ -79,7 +79,7 @@ namespace StudentManagement
                         {
                             manageProduct.EnterProduct();
                         }
-                        Console.WriteLine($"\nAdd {s} succes!");
+                        Console.WriteLine($"\nAdd {s} success!");
                         break;
                     case 2:
                         if (manageStudent.SoLuongStudent() > 0 || manageEmployee.SoLuongEmployee() > 0 || manageProduct.SoLuongProduct() > 0)
